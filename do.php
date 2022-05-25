@@ -2,10 +2,10 @@
 
 if( isset( $_GET[ 'Submit' ] ) ) {
 	// Get input
-	$id = $_GET[ 'id' ];
+	$id = $_GET[ 'id' ]; /*- Никак не обрабатывается значение id*/
 
 	// Check database
-	$getid  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';";
+	$getid  = "SELECT first_name, last_name FROM users WHERE user_id = '$id';"; //-Запись идёт напрямую в запрос(Уязвимый код CWE89)
 	$result = mysqli_query($GLOBALS["___mysqli_ston"],  $getid ); // Removed 'or die' to suppress mysql errors
 
 	// Get results
